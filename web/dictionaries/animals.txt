@@ -1,0 +1,5 @@
+sloth,a slow-moving tropical American mammal that hangs upside down from the branches of trees using its long limbs and hooked claws.
+boa constrictor,a large and typically boldly marked snake that kills by coiling around its prey and asphyxiating it\, native to tropical America.
+turtle,a slow-moving reptile\, enclosed in a scaly or leathery domed shell into which it can retract its head and thick legs.
+cat,a small domesticated carnivorous mammal with soft fur\, a short snout\, and retractile claws. It is widely kept as a pet or for catching mice\, and many breeds have been developed.
+dog,a domesticated carnivorous mammal that typically has a long snout\, an acute sense of smell\, and a barking\, howling\, or whining voice. It is widely kept as a pet or for work or field sports.

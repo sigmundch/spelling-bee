@@ -1,0 +1,35 @@
+<!-- import polymer-element's definition -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/core_elements/core_list_dart.html">
+<link rel="import" href="../../packages/paper_elements/paper_item.html">
+<link rel="import" href="../../packages/core_elements/core_item.html">
+<link rel="import" href="../../packages/core_elements/core_menu.html">
+
+<polymer-element name="dictionary-list">
+  <template>
+    <style>
+       paper-item::shadow #ripple {
+         color: #03A9F4;
+       }
+       paper-item {
+         font-size: 1.3em;
+         background-color:#e1f5fe;
+       }
+       core-menu {
+         margin: 0px !important;
+         background-color:#e1f5fe;
+       }
+     </style>
+    <core-menu>
+    <div>&nbsp;</div>
+    <core-list-dart id="list" data="{{dictionaries}}" on-core-activate={{clear}}>
+      <template>
+      <paper-item> {{dictionary.name}}</paper-item>
+      <hr>
+      </template>
+    </core-list-dart>
+    </core-menu>
+  </template>
+  <script type="application/dart" src="dictionary_list.dart"></script>
+</polymer-element>

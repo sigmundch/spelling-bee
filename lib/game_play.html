@@ -1,0 +1,58 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/core_elements/core_style.html">
+<link rel="import" href="../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../packages/paper_elements/paper_button.html">
+<link rel="import" href="../../packages/paper_elements/paper_progress.html">
+<link rel="import" href="../../packages/core_elements/core_icon_button.html">
+<link rel="import" href="../../packages/paper_elements/paper_dialog.html">
+
+<polymer-element name="game-play">
+  <template>
+    <style>
+      core-icon-button {
+        cursor: pointer;
+        background-color: #03A9F4;
+      }
+      paper-progress, paper-input { width: 100%; }
+      paper-progress.all::shadow #activeProgress { background-color: #03A9F4; }
+      paper-progress.all::shadow #secondaryProgress { background-color: #ffeb3b; }
+      paper-progress.skip::shadow #activeProgress { background-color: #ffeb3b; }
+      paper-progress.wrong::shadow #activeProgress { background-color: #e51c23; }
+      paper-button.blue { background-color: #03A9F4; }
+      paper-button.red { background-color: #e51c23; }
+      paper-input::shadow .focusedColor {background-color: #03a9f4;}
+    </style>
+    <div layout vertical style="height: 80vh;">
+      <div layout horizontal>
+        <div flex>
+        <paper-progress class="all" value="{{100 * (game.current - game.skipped) / game.total}}"
+                                    secondaryProgress="{{100 * game.current / game.total}}"></paper-progress>
+        <paper-progress class="wrong" value="{{100 * game.wrong / game.total}}"></paper-progress><br>
+        </div>
+        <div>&nbsp;&nbsp;&nbsp;</div>
+        <core-icon-button icon="refresh" on-tap={{replay}}></core-icon-button>
+      </div>
+      <div>
+        <paper-input type="url" autocomplete="off" autofocus inputValue="{{answer}}" focused="true"></paper-input>
+      </div>
+      <div class="bottom" layout horizontal>
+        <paper-button class="blue" disabled?="{{gameOver}}" label="Submit Answer" on-tap="{{submit}}"></paper-button>
+        <paper-button class="red" disabled?="{{gameOver}}" label="Skip" on-tap="{{skip}}"></paper-button>
+        <div flex></div>
+        <div>{{minutes}}:{{seconds}}</div>
+      </div>
+      <div flex></div>
+      <div class="very-bottom" hidden?={{!gameOver}} self-center layout vertical>
+        <paper-button self-center class="blue" label="Review Performance" on-tap="{{toPerformance}}"></paper-button>
+        <br>
+        <paper-button self-center class="blue" label="Leaderboard" on-tap="{{toLeaderboard}}"></paper-button>
+      </div>
+    </div>
+    <paper-dialog id="correct" layered="true" heading="Correct!"></paper-dialog>
+    <paper-dialog id="incorrect" layered="true" heading="Sorry, {{lastAnswer}} is incorrect.">
+      <p>The correct spelling is {{lastWord}}</p>
+    </paper-dialog>
+
+  </template>
+  <script type="application/dart" src="game_play.dart"></script>
+</polymer-element>

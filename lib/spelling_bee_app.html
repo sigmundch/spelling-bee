@@ -1,0 +1,45 @@
+<!-- import polymer-element's definition -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="dictionary_list.html">
+<link rel="import" href="dictionary_details.html">
+<link rel="import" href="game_play.html">
+<link rel="import" href="../../packages/core_elements/core_header_panel.html">
+<link rel="import" href="../../packages/core_elements/core_pages.html">
+<link rel="import" href="../../packages/core_elements/core_icon_button.html">
+<link rel="import">
+
+<polymer-element name="spelling-bee-app" attributes="fooo">
+  <template>
+    <style>
+     core-header-panel {
+       background: white;
+       height: 100vh;
+     }
+     core-toolbar {
+        background-color: #03A9F4;
+        white-space: nowrap;
+     }
+     core-icon-button {
+        cursor: pointer;
+     }
+    </style>
+    <core-header-panel>
+      <core-toolbar>
+        <template if="{{showBack}}">
+          <core-icon-button icon="chevron-left" on-tap={{restart}}></core-icon-button>
+        </template>
+        Spelling Bee: {{subtitle}}
+      </core-toolbar>
+
+      <core-pages selected="{{currentPage}}">
+        <dictionary-list></dictionary-list>
+        <dictionary-details dictionary={{state.currentDictionary}}></dictionary-details>
+        <game-play game="{{state.currentGame}}"></game-play>
+        <div> performance results </div>
+        <div> leaderboard </div>
+      </core-pages>
+    </core-header-panel>
+  </template>
+  <script type="application/dart" src="spelling_bee_app.dart"></script>
+</polymer-element>

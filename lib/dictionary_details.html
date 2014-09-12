@@ -1,0 +1,33 @@
+<!-- import polymer-element's definition -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../packages/paper_elements/paper_button.html">
+<link rel="import" href="../../packages/core_elements/core_icon_button.html">
+
+<polymer-element name="dictionary-details">
+  <template>
+    <style>
+      .blue { background-color: #03A9F4; }
+      .text { font-size: 1.3em; }
+      .filler { height: 80vh; }
+    </style>
+    <div vertical layout class="filler">
+    <p class='text'> {{dictionary.description}} </p>
+    <template if="{{!loaded}}">
+      <p>Loading dictionary...</p>
+    </template>
+    <div flex></div>
+    <paper-button class="blue" raisedButton
+                  label="Start Quick Game"
+                  disabled?="{{!loaded}}"
+                  on-tap="{{startQuickGame}}"></paper-button>
+    <br>
+    <paper-button class="blue" raisedButton
+                  label="Start Game"
+                  disabled?="{{!loaded}}"
+                  on-tap="{{startGame}}"></paper-button>
+    </div>
+  </template>
+  <script type="application/dart" src="dictionary_details.dart"></script>
+</polymer-element>
